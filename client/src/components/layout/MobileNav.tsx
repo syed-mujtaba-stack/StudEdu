@@ -21,16 +21,14 @@ export function MobileNav() {
         {navItems.map((item) => {
           const isActive = location === item.href;
           const Icon = item.icon;
-          
+
           return (
-            <Link key={item.label} href={item.href}>
-              <a className={cn(
-                "flex flex-col items-center justify-center w-full h-full space-y-1",
-                isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
-              )}>
-                <Icon className={cn("h-5 w-5", isActive && "fill-current")} />
-                <span className="text-[10px] font-medium">{item.label}</span>
-              </a>
+            <Link key={item.label} href={item.href} className={cn(
+              "flex flex-col items-center justify-center w-full h-full space-y-1",
+              isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+            )}>
+              <Icon className={cn("h-5 w-5", isActive && "fill-current")} />
+              <span className="text-[10px] font-medium">{item.label}</span>
             </Link>
           );
         })}

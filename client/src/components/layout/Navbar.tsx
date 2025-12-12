@@ -26,33 +26,33 @@ export function Navbar() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <Link href="/">
-              <a className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                  <BookOpen className="h-5 w-5" />
-                </div>
-                <span className="text-xl font-bold tracking-tight text-foreground">StudEdu</span>
-              </a>
+            <Link href="/" className="flex items-center gap-2">
+              <img 
+                src="/logo-animated.svg" 
+                alt="StudEdu Logo" 
+                className="h-10 w-10"
+              />
+              <span className="text-xl font-bold tracking-tight text-foreground">StudEdu</span>
             </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-6">
             {!isDashboard && (
               <>
-                <Link href="/"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Home</a></Link>
-                <Link href="/dashboard"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Courses</a></Link>
-                <Link href="#"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Mentors</a></Link>
-                <Link href="#"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Pricing</a></Link>
+                <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Home</Link>
+                <Link href="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Courses</Link>
+                <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Mentors</Link>
+                <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Pricing</Link>
               </>
             )}
-            
+
             {isDashboard && (
-               <div className="relative w-64">
+              <div className="relative w-64">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="search"
                   placeholder="Search courses..."
-                  className="w-full bg-background pl-8 h-9 md:w-[300px] lg:w-[300px]" 
+                  className="w-full bg-background pl-8 h-9 md:w-[300px] lg:w-[300px]"
                 />
               </div>
             )}
@@ -69,42 +69,42 @@ export function Navbar() {
                 </Button>
               </>
             ) : (
-               <div className="flex items-center gap-4">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                        <Avatar className="h-8 w-8">
-                          <AvatarImage src={user.avatar} alt={user.name} />
-                          <AvatarFallback>{user.name.slice(0, 2).toUpperCase()}</AvatarFallback>
-                        </Avatar>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56" align="end" forceMount>
-                      <DropdownMenuLabel className="font-normal">
-                        <div className="flex flex-col space-y-1">
-                          <p className="text-sm font-medium leading-none">{user.name}</p>
-                          <p className="text-xs leading-none text-muted-foreground">
-                            {user.email}
-                          </p>
-                        </div>
-                      </DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem asChild>
-                        <Link href="/dashboard">Dashboard</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <Link href="/course/create">Create Course</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>Profile</DropdownMenuItem>
-                      <DropdownMenuItem>Settings</DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem onClick={() => signOut()}>
-                        <LogOut className="mr-2 h-4 w-4" />
-                        <span>Log out</span>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-               </div>
+              <div className="flex items-center gap-4">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage src={user.avatar} alt={user.name} />
+                        <AvatarFallback>{user.name.slice(0, 2).toUpperCase()}</AvatarFallback>
+                      </Avatar>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56" align="end" forceMount>
+                    <DropdownMenuLabel className="font-normal">
+                      <div className="flex flex-col space-y-1">
+                        <p className="text-sm font-medium leading-none">{user.name}</p>
+                        <p className="text-xs leading-none text-muted-foreground">
+                          {user.email}
+                        </p>
+                      </div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link href="/dashboard">Dashboard</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/course/create">Create Course</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                    <DropdownMenuItem>Settings</DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => signOut()}>
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Log out</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             )}
           </div>
 
@@ -119,27 +119,27 @@ export function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden border-t p-4 space-y-4 bg-background">
-           <div className="space-y-2">
-            <Link href="/"><a className="block text-sm font-medium py-2" onClick={() => setIsOpen(false)}>Home</a></Link>
-            <Link href="/dashboard"><a className="block text-sm font-medium py-2" onClick={() => setIsOpen(false)}>Courses</a></Link>
-            <Link href="#"><a className="block text-sm font-medium py-2" onClick={() => setIsOpen(false)}>Mentors</a></Link>
-           </div>
-           <div className="pt-4 border-t space-y-2">
-             {!user ? (
-                <>
-                  <Button variant="outline" className="w-full" asChild>
-                      <Link href="/login">Log In</Link>
-                  </Button>
-                  <Button className="w-full" asChild>
-                      <Link href="/signup">Get Started</Link>
-                  </Button>
-                </>
-             ) : (
-                <Button variant="destructive" className="w-full" onClick={() => signOut()}>
-                  Sign Out
+          <div className="space-y-2">
+            <Link href="/" className="block text-sm font-medium py-2" onClick={() => setIsOpen(false)}>Home</Link>
+            <Link href="/dashboard" className="block text-sm font-medium py-2" onClick={() => setIsOpen(false)}>Courses</Link>
+            <Link href="#" className="block text-sm font-medium py-2" onClick={() => setIsOpen(false)}>Mentors</Link>
+          </div>
+          <div className="pt-4 border-t space-y-2">
+            {!user ? (
+              <>
+                <Button variant="outline" className="w-full" asChild>
+                  <Link href="/login">Log In</Link>
                 </Button>
-             )}
-           </div>
+                <Button className="w-full" asChild>
+                  <Link href="/signup">Get Started</Link>
+                </Button>
+              </>
+            ) : (
+              <Button variant="destructive" className="w-full" onClick={() => signOut()}>
+                Sign Out
+              </Button>
+            )}
+          </div>
         </div>
       )}
     </nav>

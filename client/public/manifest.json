@@ -1,0 +1,56 @@
+{
+    "name": "StudEdu - AI-Powered Learning Platform",
+    "short_name": "StudEdu",
+    "description": "Empowering learners worldwide with accessible, high-quality education powered by AI",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6366f1",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/logo-animated.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "/logo-animated.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "maskable"
+        }
+    ],
+    "categories": [
+        "education",
+        "productivity"
+    ],
+    "shortcuts": [
+        {
+            "name": "Dashboard",
+            "short_name": "Dashboard",
+            "description": "Go to your learning dashboard",
+            "url": "/dashboard",
+            "icons": [
+                {
+                    "src": "/logo-animated.svg",
+                    "type": "image/svg+xml"
+                }
+            ]
+        },
+        {
+            "name": "AI Tutor",
+            "short_name": "Tutor",
+            "description": "Chat with AI Tutor",
+            "url": "/dashboard?ai=tutor",
+            "icons": [
+                {
+                    "src": "/logo-animated.svg",
+                    "type": "image/svg+xml"
+                }
+            ]
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false
+}

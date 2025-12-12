@@ -8,49 +8,51 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                  <BookOpen className="h-5 w-5" />
-               </div>
-               <span className="text-xl font-bold tracking-tight">StudEdu</span>
+              <img
+                src="/logo-animated.svg"
+                alt="StudEdu Logo"
+                className="h-10 w-10"
+              />
+              <span className="text-xl font-bold tracking-tight">StudEdu</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Empowering learners worldwide with accessible, high-quality education from top industry experts.
             </p>
           </div>
-          
+
           <div>
             <h3 className="text-sm font-semibold mb-4">Platform</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">Browse Courses</a></Link></li>
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">Mentorship</a></Link></li>
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">Pricing</a></Link></li>
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">For Business</a></Link></li>
+              <li><Link href="/dashboard" className="hover:text-foreground transition-colors">Browse Courses</Link></li>
+              <li><Link href="/mentors" className="hover:text-foreground transition-colors">Mentorship</Link></li>
+              <li><Link href="/pricing" className="hover:text-foreground transition-colors">Pricing</Link></li>
+              <li><Link href="/business" className="hover:text-foreground transition-colors">For Business</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold mb-4">Company</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">About Us</a></Link></li>
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">Careers</a></Link></li>
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">Blog</a></Link></li>
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">Contact</a></Link></li>
+              <li><Link href="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
+              <li><Link href="/careers" className="hover:text-foreground transition-colors">Careers</Link></li>
+              <li><Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link></li>
+              <li><Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold mb-4">Legal</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">Terms of Service</a></Link></li>
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">Privacy Policy</a></Link></li>
-              <li><Link href="#"><a className="hover:text-foreground transition-colors">Cookie Policy</a></Link></li>
+              <li><Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link></li>
+              <li><Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/cookies" className="hover:text-foreground transition-colors">Cookie Policy</Link></li>
             </ul>
           </div>
         </div>
-        
+
         <div className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 StudEdu Inc. All rights reserved.
+            © 2025 StudEdu Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <ButtonIcon icon={Facebook} />

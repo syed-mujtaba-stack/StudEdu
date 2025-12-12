@@ -11,6 +11,15 @@ import Course from "@/pages/course";
 import CreateCourse from "@/pages/create-course";
 import LoginPage from "@/pages/login";
 import SignupPage from "@/pages/signup";
+import About from "@/pages/about";
+import Careers from "@/pages/careers";
+import Blog from "@/pages/blog";
+import BlogPost from "@/pages/blog-post";
+import Contact from "@/pages/contact";
+import Business from "@/pages/business";
+import Terms from "@/pages/terms";
+import Privacy from "@/pages/privacy";
+import Cookies from "@/pages/cookies";
 import { Loader2 } from "lucide-react";
 
 // Protected Route Component
@@ -38,7 +47,20 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignupPage} />
-      
+
+      {/* Static Pages */}
+      <Route path="/about" component={About} />
+      <Route path="/careers" component={Careers} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/business" component={Business} />
+
+      {/* Legal Pages */}
+      <Route path="/terms" component={Terms} />
+      <Route path="/privacy" component={Privacy} />
+      <Route path="/cookies" component={Cookies} />
+
       {/* Protected Routes */}
       <Route path="/dashboard">
         <ProtectedRoute component={Dashboard} />
@@ -49,7 +71,7 @@ function Router() {
       <Route path="/course/:id">
         <ProtectedRoute component={Course} />
       </Route>
-      
+
       <Route component={NotFound} />
     </Switch>
   );

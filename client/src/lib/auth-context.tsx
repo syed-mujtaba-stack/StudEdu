@@ -15,6 +15,7 @@ interface AuthContextType {
   isLoading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, name: string) => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
 }
 
@@ -43,7 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(true);
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     // Mock successful login
     const mockUser: User = {
       id: '123',
@@ -78,6 +79,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLocation('/dashboard');
   };
 
+  const signInWithGoogle = async () => {
+    setIsLoading(true);
+    // Simulate Google OAuth flow
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    // Mock Google user - in production, this would come from Supabase/Firebase
+    const googleUser: User = {
+      id: 'google_' + Math.random().toString(36).substr(2, 9),
+      email: 'user@gmail.com',
+      name: 'Google User',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=google',
+      role: 'student'
+    };
+
+    setUser(googleUser);
+    localStorage.setItem('studedu_user', JSON.stringify(googleUser));
+    setIsLoading(false);
+    setLocation('/dashboard');
+  };
+
   const signOut = async () => {
     setIsLoading(true);
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -88,7 +109,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, signIn, signUp, signOut }}>
+    <AuthContext.Provider value={{ user, isLoading, signIn, signUp, signInWithGoogle, signOut }}>
       {children}
     </AuthContext.Provider>
   );
@@ -101,3 +122,4 @@ export function useAuth() {
   }
   return context;
 }
+
