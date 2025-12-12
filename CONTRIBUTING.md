@@ -74,7 +74,11 @@ cd ai-backend && pip install -r requirements.txt
 
 # Set up environment variables
 cp ai-backend/.env.example ai-backend/.env
-# Edit .env with your Groq API key
+# Edit ai-backend/.env with your Groq API key
+
+# Set up frontend environment
+cp .env.example .env
+# Edit .env with your Supabase credentials (for Auth)
 
 # Run the development servers
 # Terminal 1: AI Backend

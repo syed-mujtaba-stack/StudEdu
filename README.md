@@ -98,10 +98,20 @@ cd ..
 Create `ai-backend/.env`:
 ```env
 GROQ_API_KEY=your_groq_api_key_here
-SUPABASE_URL=your_supabase_url (optional)
-SUPABASE_KEY=your_supabase_key (optional)
+SUPABASE_URL=your_supabase_url (optional for backend logging)
+SUPABASE_KEY=your_supabase_key (optional for backend logging)
 RATE_LIMIT_PER_MINUTE=20
 ```
+
+### Frontend Environment (.env)
+
+Create a `.env` file in the root `StudEdu-Platform` directory:
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+*(Get these keys from your Supabase Dashboard -> Settings -> API)*
+
 
 ### Development
 
@@ -139,9 +149,9 @@ StudEdu-Platform/
 │   │   │   ├── ai/          # AI feature components
 │   │   │   ├── layout/      # Layout components
 │   │   │   └── ui/          # shadcn/ui components
-│   │   ├── pages/           # Route pages
+│   │   ├── pages/           # Route pages (Login, Dashboard, Course, etc.)
 │   │   ├── hooks/           # Custom React hooks
-│   │   ├── lib/             # Utilities and configs
+│   │   ├── lib/             # Utilities (supabase.ts, utils.ts)
 │   │   └── pwa.ts           # PWA install handling
 │   ├── public/              # Static assets
 │   │   ├── logo-animated.svg # Animated app logo
@@ -217,12 +227,14 @@ Three output formats:
 3. Tap "Add to Home Screen"
 
 ## 🔐 Authentication
+ 
+ Production-ready authentication powered by **Supabase Auth**:
+ 
+ 1. **Email/Password** - Secure sign-up and login with email verification
+ 2. **Google OAuth** - One-click sign-in integration
+ 3. **Password Recovery** - Forgot password and reset functionality
+ 4. **Session Management** - Persisted sessions with secure token handling
 
-Currently using mock authentication for development. For production:
-
-1. **Google OAuth** integration is ready
-2. Configure OAuth credentials in environment
-3. Update auth endpoints in `auth-context.tsx`
 
 ## 📄 Legal & Documentation
 

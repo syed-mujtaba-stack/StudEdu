@@ -11,6 +11,8 @@ import Course from "@/pages/course";
 import CreateCourse from "@/pages/create-course";
 import LoginPage from "@/pages/login";
 import SignupPage from "@/pages/signup";
+import ForgotPasswordPage from "@/pages/forgot-password";
+import ResetPasswordPage from "@/pages/reset-password";
 import About from "@/pages/about";
 import Careers from "@/pages/careers";
 import Blog from "@/pages/blog";
@@ -47,6 +49,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignupPage} />
+      <Route path="/forgot-password" component={ForgotPasswordPage} />
+      <Route path="/reset-password" component={ResetPasswordPage} />
 
       {/* Static Pages */}
       <Route path="/about" component={About} />
