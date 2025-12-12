@@ -22,6 +22,8 @@ import Business from "@/pages/business";
 import Terms from "@/pages/terms";
 import Privacy from "@/pages/privacy";
 import Cookies from "@/pages/cookies";
+import Profile from "@/pages/profile";
+import Settings from "@/pages/settings";
 import { Loader2 } from "lucide-react";
 
 // Protected Route Component
@@ -74,6 +76,12 @@ function Router() {
       </Route>
       <Route path="/course/:id">
         <ProtectedRoute component={Course} />
+      </Route>
+      <Route path="/profile">
+        <ProtectedRoute component={Profile} />
+      </Route>
+      <Route path="/settings">
+        <ProtectedRoute component={Settings} />
       </Route>
 
       <Route component={NotFound} />

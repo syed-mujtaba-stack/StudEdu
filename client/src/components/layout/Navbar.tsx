@@ -27,9 +27,9 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center gap-2">
-              <img 
-                src="/logo-animated.svg" 
-                alt="StudEdu Logo" 
+              <img
+                src="/logo-animated.svg"
+                alt="StudEdu Logo"
                 className="h-10 w-10"
               />
               <span className="text-xl font-bold tracking-tight text-foreground">StudEdu</span>
@@ -95,8 +95,12 @@ export function Navbar() {
                     <DropdownMenuItem asChild>
                       <Link href="/course/create">Create Course</Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                    <DropdownMenuItem>Settings</DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/profile">Profile</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/settings">Settings</Link>
+                    </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => signOut()}>
                       <LogOut className="mr-2 h-4 w-4" />

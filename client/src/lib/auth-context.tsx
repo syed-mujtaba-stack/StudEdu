@@ -23,6 +23,7 @@ interface AuthContextType {
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
   updatePassword: (newPassword: string) => Promise<void>;
+  updateProfile: (updates: Partial<User>) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -292,6 +293,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const updateProfile = async (updates: Partial<User>) => {
+    try {
+      const { error } = await supabase.auth.updateUser({
+        data: {
+          full_name: updates.name,
+          avatar_url: updates.avatar,
+        }
+      });
+
+      if (error) throw error;
+
+      // Update local state immediately for better UX
+      if (user) {
+        setUser({ ...user, ...updates });
+      }
+
+      toast({
+        title: "Profile updated",
+        description: "Your profile information has been updated.",
+      });
+    } catch (error: any) {
+      console.error('Profile update error:', error);
+      toast({
+        variant: "destructive",
+        title: "Update failed",
+        description: error.message || "An error occurred updating your profile.",
+      });
+      throw error;
+    }
+  };
+
   return (
     <AuthContext.Provider value={{
       user,
@@ -301,7 +333,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       signInWithGoogle,
       signOut,
       resetPassword,
-      updatePassword
+      updatePassword,
+      updateProfile
     }}>
       {children}
     </AuthContext.Provider>
