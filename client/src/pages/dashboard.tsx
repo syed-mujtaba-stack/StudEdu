@@ -1,5 +1,4 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { Layout } from "@/components/layout/Layout";
 import { CourseCard } from "@/components/ui/course-card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -18,10 +17,8 @@ export default function Dashboard() {
   }));
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
-      
-      <main className="flex-1 container px-4 md:px-6 py-8">
+    <Layout>
+      <div className="container px-4 md:px-6 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Welcome back, Alex!</h1>
@@ -96,9 +93,7 @@ export default function Dashboard() {
              ))}
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </Layout>
   );
 }

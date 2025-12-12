@@ -1,5 +1,4 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/ui/course-card";
 import { CheckCircle2, PlayCircle, Users, Award, Clock } from "lucide-react";
@@ -10,9 +9,7 @@ export default function Home() {
   const featuredCourses = MOCK_COURSES.slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
-      
+    <Layout>
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 pb-24 lg:pt-32 lg:pb-40">
         <div className="container px-4 md:px-6 relative z-10">
@@ -203,8 +200,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 }

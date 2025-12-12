@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/layout/Navbar";
+import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -29,10 +29,8 @@ export default function Course() {
   }, [course]);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
-      
-      <div className="flex-1 flex flex-col lg:flex-row h-[calc(100vh-64px)] overflow-hidden">
+    <Layout showFooter={false}>
+      <div className="flex flex-col lg:flex-row h-[calc(100vh-64px)] lg:h-[calc(100vh-64px)] overflow-hidden">
         {/* Main Content Area */}
         <div className="flex-1 overflow-y-auto bg-background">
            <div className="aspect-video bg-black w-full relative group cursor-pointer">
@@ -190,6 +188,6 @@ export default function Course() {
            </ScrollArea>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

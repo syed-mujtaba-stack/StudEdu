@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,6 +10,7 @@ import { Plus, Trash2, GripVertical, Video, FileText, LayoutList, Loader2, Save 
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/lib/auth-context";
 import { Redirect } from "wouter";
+import { useState } from "react";
 
 export default function CreateCourse() {
   const { user } = useAuth();
@@ -57,10 +56,8 @@ export default function CreateCourse() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
-      
-      <main className="flex-1 container px-4 md:px-6 py-8 max-w-5xl mx-auto">
+    <Layout>
+      <div className="container px-4 md:px-6 py-8 max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
              <h1 className="text-3xl font-bold tracking-tight">Create New Course</h1>
@@ -253,9 +250,7 @@ export default function CreateCourse() {
              </Card>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </Layout>
   );
 }
