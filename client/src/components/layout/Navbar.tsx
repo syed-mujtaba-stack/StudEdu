@@ -1,12 +1,23 @@
 import { Link, useLocation } from "wouter";
-import { Search, Menu, X, BookOpen } from "lucide-react";
+import { Search, Menu, X, BookOpen, LogOut, User as UserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { useAuth } from "@/lib/auth-context";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
+  const { user, signOut } = useAuth();
 
   const isDashboard = location.startsWith("/dashboard") || location.startsWith("/course");
 
@@ -48,23 +59,48 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            {location === "/" ? (
+            {!user ? (
               <>
                 <Button variant="ghost" size="sm" asChild>
-                  <Link href="/dashboard">Log In</Link>
+                  <Link href="/login">Log In</Link>
                 </Button>
                 <Button size="sm" asChild>
-                  <Link href="/dashboard">Get Started</Link>
+                  <Link href="/signup">Get Started</Link>
                 </Button>
               </>
             ) : (
                <div className="flex items-center gap-4">
-                 <Button variant="ghost" size="sm" asChild>
-                    <Link href="/">Sign Out</Link>
-                 </Button>
-                  <div className="h-8 w-8 rounded-full bg-secondary overflow-hidden border">
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User" />
-                  </div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                        <Avatar className="h-8 w-8">
+                          <AvatarImage src={user.avatar} alt={user.name} />
+                          <AvatarFallback>{user.name.slice(0, 2).toUpperCase()}</AvatarFallback>
+                        </Avatar>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56" align="end" forceMount>
+                      <DropdownMenuLabel className="font-normal">
+                        <div className="flex flex-col space-y-1">
+                          <p className="text-sm font-medium leading-none">{user.name}</p>
+                          <p className="text-xs leading-none text-muted-foreground">
+                            {user.email}
+                          </p>
+                        </div>
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link href="/dashboard">Dashboard</Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>Profile</DropdownMenuItem>
+                      <DropdownMenuItem>Settings</DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem onClick={() => signOut()}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Log out</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                </div>
             )}
           </div>
@@ -86,9 +122,20 @@ export function Navbar() {
             <Link href="#"><a className="block text-sm font-medium py-2" onClick={() => setIsOpen(false)}>Mentors</a></Link>
            </div>
            <div className="pt-4 border-t space-y-2">
-             <Button className="w-full" asChild>
-                <Link href="/dashboard">Get Started</Link>
-             </Button>
+             {!user ? (
+                <>
+                  <Button variant="outline" className="w-full" asChild>
+                      <Link href="/login">Log In</Link>
+                  </Button>
+                  <Button className="w-full" asChild>
+                      <Link href="/signup">Get Started</Link>
+                  </Button>
+                </>
+             ) : (
+                <Button variant="destructive" className="w-full" onClick={() => signOut()}>
+                  Sign Out
+                </Button>
+             )}
            </div>
         </div>
       )}
