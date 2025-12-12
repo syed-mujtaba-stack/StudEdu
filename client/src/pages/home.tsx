@@ -4,55 +4,11 @@ import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/ui/course-card";
 import { CheckCircle2, PlayCircle, Users, Award, Clock } from "lucide-react";
 import heroImage from "@assets/generated_images/modern_university_students_studying_in_a_library.png";
-
-const FEATURED_COURSES = [
-  {
-    id: "1",
-    title: "Complete Web Development Bootcamp 2025",
-    category: "Development",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=600",
-    instructor: "Dr. Angela Yu",
-    rating: 4.8,
-    students: 12500,
-    duration: "42h 15m",
-    price: "$89.99"
-  },
-  {
-    id: "2",
-    title: "Data Science & Machine Learning Masterclass",
-    category: "Data Science",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600",
-    instructor: "Andrew Ng",
-    rating: 4.9,
-    students: 8400,
-    duration: "36h 30m",
-    price: "$94.99"
-  },
-  {
-    id: "3",
-    title: "Digital Marketing Strategy: From Zero to Hero",
-    category: "Marketing",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
-    instructor: "Seth Godin",
-    rating: 4.7,
-    students: 5600,
-    duration: "12h 45m",
-    price: "$69.99"
-  },
-  {
-    id: "4",
-    title: "UX/UI Design Principles for Beginners",
-    category: "Design",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600",
-    instructor: "Sarah Doody",
-    rating: 4.8,
-    students: 3200,
-    duration: "18h 20m",
-    price: "$79.99"
-  }
-];
+import { MOCK_COURSES } from "@/lib/mock-data";
 
 export default function Home() {
+  const featuredCourses = MOCK_COURSES.slice(0, 4);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
@@ -64,21 +20,21 @@ export default function Home() {
             <div className="space-y-8 animate-in slide-in-from-left-4 fade-in duration-700">
               <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-secondary text-secondary-foreground">
                 <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
-                New courses added weekly
+                100% Free Education for Everyone
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1]">
-                Unlock Your Potential with <span className="text-primary">Global Experts</span>
+                Master New Skills with <span className="text-primary">Free Premium Courses</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-[600px]">
-                Access world-class education from anywhere. Master new skills in coding, design, business, and more with our interactive platform.
+                Access world-class education without barriers. Learn coding, AI, design, and business from industry experts completely for free.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="text-lg px-8 h-14">
-                  Start Learning Now
+                  Start Learning for Free
                 </Button>
                 <Button size="lg" variant="outline" className="text-lg px-8 h-14">
                   <PlayCircle className="mr-2 h-5 w-5" />
-                  View Demo
+                  Explore Catalog
                 </Button>
               </div>
               
@@ -91,8 +47,8 @@ export default function Home() {
                   ))}
                 </div>
                 <div>
-                  <div className="font-bold text-foreground">10,000+</div>
-                  <div className="text-sm">Active Students</div>
+                  <div className="font-bold text-foreground">50,000+</div>
+                  <div className="text-sm">Happy Students</div>
                 </div>
               </div>
             </div>
@@ -115,8 +71,8 @@ export default function Home() {
                         <Award className="h-6 w-6" />
                       </div>
                       <div>
-                        <div className="font-bold text-foreground">Certified Excellence</div>
-                        <div className="text-sm text-muted-foreground">Industry recognized certificates</div>
+                        <div className="font-bold text-foreground">100% Free</div>
+                        <div className="text-sm text-muted-foreground">No credit card required</div>
                       </div>
                     </div>
                   </div>
@@ -131,19 +87,19 @@ export default function Home() {
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-2">
-              <h3 className="text-3xl font-bold text-primary">250+</h3>
-              <p className="text-sm font-medium text-muted-foreground">Expert Instructors</p>
+              <h3 className="text-3xl font-bold text-primary">100%</h3>
+              <p className="text-sm font-medium text-muted-foreground">Free Forever</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-3xl font-bold text-primary">15k+</h3>
+              <h3 className="text-3xl font-bold text-primary">50k+</h3>
               <p className="text-sm font-medium text-muted-foreground">Total Students</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-3xl font-bold text-primary">120+</h3>
-              <p className="text-sm font-medium text-muted-foreground">Online Courses</p>
+              <h3 className="text-3xl font-bold text-primary">500+</h3>
+              <p className="text-sm font-medium text-muted-foreground">Video Lessons</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-3xl font-bold text-primary">4.8/5</h3>
+              <h3 className="text-3xl font-bold text-primary">4.9/5</h3>
               <p className="text-sm font-medium text-muted-foreground">Average Rating</p>
             </div>
           </div>
@@ -158,17 +114,21 @@ export default function Home() {
               <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold bg-accent/10 text-accent uppercase tracking-wide">
                 Top Rated
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Explore Featured Courses</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Explore Free Courses</h2>
               <p className="text-muted-foreground text-lg">
-                Hand-picked courses to help you advance your career and learn new skills.
+                High-quality education shouldn't be a luxury. Pick a course and start learning today.
               </p>
             </div>
             <Button variant="outline" className="hidden md:flex">View All Courses</Button>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {FEATURED_COURSES.map(course => (
-              <CourseCard key={course.id} {...course} />
+            {featuredCourses.map(course => (
+              <CourseCard 
+                key={course.id} 
+                {...course} 
+                price="Free"
+              />
             ))}
           </div>
           
