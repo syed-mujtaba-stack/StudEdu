@@ -8,6 +8,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
 import Course from "@/pages/course";
+import CreateCourse from "@/pages/create-course";
 import LoginPage from "@/pages/login";
 import SignupPage from "@/pages/signup";
 import { Loader2 } from "lucide-react";
@@ -41,6 +42,9 @@ function Router() {
       {/* Protected Routes */}
       <Route path="/dashboard">
         <ProtectedRoute component={Dashboard} />
+      </Route>
+      <Route path="/course/create">
+        <ProtectedRoute component={CreateCourse} />
       </Route>
       <Route path="/course/:id">
         <ProtectedRoute component={Course} />
