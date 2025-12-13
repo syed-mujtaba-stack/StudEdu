@@ -7,3 +7,4 @@ pydantic-settings>=2.1.0
 supabase>=2.0.0
 python-dotenv>=1.0.0
 slowapi>=0.1.9
+websockets>=13.0

@@ -46,6 +46,8 @@ export function useAIStream(options: UseAIStreamOptions = {}) {
             done: false,
         });
 
+        console.log("Starting AI stream to:", url); // Debug URL
+
         try {
             const response = await fetch(url, {
                 method: 'POST',
