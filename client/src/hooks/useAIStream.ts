@@ -213,4 +213,4 @@ export function useAIRequest<T>() {
 }
 
 // AI Backend base URL
-export const AI_BACKEND_URL = 'http://localhost:8000';
+export const AI_BACKEND_URL = import.meta.env.VITE_AI_BACKEND_URL || 'https://stud-edu.vercel.app';
