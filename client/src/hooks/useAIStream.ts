@@ -216,6 +216,6 @@ export function useAIRequest<T>() {
 
 // AI Backend base URL
 // In production, always use the live backend URL to avoid local config leaks
-export const AI_BACKEND_URL = import.meta.env.PROD
+export const AI_BACKEND_URL = (import.meta.env.PROD
     ? 'https://stud-edu.vercel.app'
-    : (import.meta.env.VITE_AI_BACKEND_URL || 'http://localhost:8000');
+    : (import.meta.env.VITE_AI_BACKEND_URL || 'http://localhost:8000')).replace(/\/$/, '');
