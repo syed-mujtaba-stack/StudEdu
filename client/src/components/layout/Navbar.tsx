@@ -58,16 +58,16 @@ export function Navbar() {
             )}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="flex items-center gap-4">
             {!user ? (
-              <>
+              <div className="hidden md:flex items-center gap-4">
                 <Button variant="ghost" size="sm" asChild>
                   <Link href="/login">Log In</Link>
                 </Button>
                 <Button size="sm" asChild>
                   <Link href="/signup">Get Started</Link>
                 </Button>
-              </>
+              </div>
             ) : (
               <div className="flex items-center gap-4">
                 <DropdownMenu>
@@ -139,9 +139,26 @@ export function Navbar() {
                 </Button>
               </>
             ) : (
-              <Button variant="destructive" className="w-full" onClick={() => signOut()}>
-                Sign Out
-              </Button>
+              <div className="space-y-1">
+                <div className="px-2 py-2 mb-2 flex items-center gap-3 bg-muted/50 rounded-md">
+                   <Avatar className="h-8 w-8">
+                       <AvatarImage src={user.avatar} alt={user.name} />
+                       <AvatarFallback>{user.name.slice(0, 2).toUpperCase()}</AvatarFallback>
+                   </Avatar>
+                   <div className="flex flex-col">
+                       <span className="text-sm font-medium">{user.name}</span>
+                       <span className="text-xs text-muted-foreground">{user.email}</span>
+                   </div>
+                </div>
+                
+                <Link href="/dashboard" className="block text-sm font-medium py-2 px-2 hover:bg-muted rounded-md" onClick={() => setIsOpen(false)}>Dashboard</Link>
+                <Link href="/profile" className="block text-sm font-medium py-2 px-2 hover:bg-muted rounded-md" onClick={() => setIsOpen(false)}>Profile</Link>
+                <Link href="/settings" className="block text-sm font-medium py-2 px-2 hover:bg-muted rounded-md" onClick={() => setIsOpen(false)}>Settings</Link>
+                
+                <Button variant="destructive" className="w-full mt-4" onClick={() => signOut()}>
+                  Sign Out
+                </Button>
+              </div>
             )}
           </div>
         </div>
