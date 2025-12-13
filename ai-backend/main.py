@@ -46,7 +46,9 @@ ALLOWED_ORIGINS = [
     "https://studedu-ai.web.app",
     "https://studedu-ai.firebaseapp.com",
     "http://localhost:5173",
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://localhost:5000",
+    "http://localhost:5001",
 ]
 
 app.add_middleware(
