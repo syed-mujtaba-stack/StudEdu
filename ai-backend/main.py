@@ -10,7 +10,7 @@ import logging
 
 from config import settings
 from middleware.rate_limit import limiter, rate_limit_exceeded_handler
-from routes import tutor, quiz, summarizer, notes, dashboard
+from routes import tutor, quiz, summarizer, notes, dashboard, courses
 
 # --------------------------------------------------
 # Logging
@@ -109,6 +109,11 @@ app.include_router(tutor.router)
 app.include_router(quiz.router)
 app.include_router(summarizer.router)
 app.include_router(notes.router)
+app.include_router(
+    courses.router, 
+    prefix="/api/courses", 
+    tags=["Courses"]
+)
 
 # IMPORTANT: dashboard router LAST
 app.include_router(

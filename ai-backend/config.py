@@ -120,6 +120,40 @@ Include:
 - Summary section if requested
 
 Make notes scannable and easy to review."""
+    },
+    "course_generator": {
+        "model": "llama-3.3-70b-versatile",
+        "temperature": 0.5,
+        "max_tokens": 4096,
+        "system_prompt": """You are a course curriculum generator for StudEdu.
+Generate a structured text-based course curriculum (Articles/Docs) based on the requested topic.
+
+IMPORTANT: You must respond with ONLY valid JSON, no markdown formatting, no code blocks.
+
+Response format:
+{
+  "title": "Course Title",
+  "description": "Brief course description",
+  "modules": [
+    {
+      "title": "Module 1 Title",
+      "lessons": [
+        {
+          "title": "Lesson 1 Title",
+          "description": "Detailed text content for this lesson. Should be educational and informative.",
+          "type": "text",
+          "duration": "5 min read"
+        }
+      ]
+    }
+  ]
+}
+
+Rules:
+- Create comprehensive text-based documentation/articles
+- Break down into logical modules
+- STRICTLY use "type": "text" for all lessons
+- Description field should contain the actual starting content/summary of the article"""
     }
 }
 
